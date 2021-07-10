@@ -1,0 +1,126 @@
+{
+    "name": "Payro/payment",
+    "type": "library",
+    "description": "Laravel Payment Gateway for Payro24",
+    "keywords": [
+        "Payro",
+        "gateway",
+        "bank",
+        "payment",
+        "payment gateway",
+        "laravel payment package",
+        "laravel payment gateway",
+        "iranKish payment gateway",
+        "laravel iranKish package",
+        "laravel iranKish",
+        "irankish",
+        "jahanPay payment gateway",
+        "laravel jahanPay package",
+        "laravel jahanPay",
+        "jahanpay",
+        "jibit payment gateway",
+        "laravel jibit package",
+        "laravel jibit",
+        "jibit",
+        "mellat payment gateway",
+        "laravel mellat package",
+        "laravel mellat",
+        "mellat",
+        "parsian payment gateway",
+        "laravel parsian package",
+        "laravel parsian",
+        "parsian",
+        "pasargad payment gateway",
+        "laravel pasargad package",
+        "laravel pasargad",
+        "pasargad",
+        "pay payment gateway",
+        "laravel pay package",
+        "laravel pay",
+        "pay",
+        "payline payment gateway",
+        "laravel payline package",
+        "laravel payline",
+        "payline",
+        "sadad payment gateway",
+        "laravel sadad package",
+        "laravel sadad",
+        "sadad",
+        "saderat payment gateway",
+        "laravel saderat package",
+        "laravel saderat",
+        "saderat",
+        "saman payment gateway",
+        "laravel saman package",
+        "laravel saman",
+        "saman",
+        "zarinpal payment gateway",
+        "laravel zarinpal package",
+        "laravel zarinpal",
+        "zarinpal",
+        "shaparak payment gateway",
+        "laravel shaparak package",
+        "laravel shaparak",
+        "shaparak",
+        "meli payment gateway",
+        "laravel meli package",
+        "laravel meli",
+        "meli",
+        "laravel melli bank payment package",
+        "melli",
+        "paypal payment gateway",
+        "laravel paypal package",
+        "laravel paypal",
+        "paypal"
+    ],
+    "homepage": "https://github.com/Payro/payment",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mahdi Khanzadi",
+            "email": "khanzadimahdi@gmail.com",
+            "homepage": "https://github.com/Payro",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "illuminate/broadcasting": ">=5.8 <7.0",
+        "illuminate/support": ">=5.8 <7.0",
+        "guzzlehttp/guzzle": ">=6.2",
+        "ramsey/uuid": "^3.8"
+    },
+    "require-dev": {
+        "orchestra/testbench": ">=4.3 <5.0",
+        "phpunit/phpunit": ">=8.0 <9.0",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Payro\\Payment\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Payro\\Payment\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Payro\\Payment\\Provider\\PaymentServiceProvider"
+            ],
+            "aliases": {
+                "Payment": "Payro\\Payment\\Facade\\Payment"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
