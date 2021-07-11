@@ -2,71 +2,9 @@
 
 <div dir=rtl>
 
-# پکیج درگاه پرداخت برای لاراول
+# پیرو۲۴
 
-
-[![Software License][ico-license]](LICENSE.md)
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads on Packagist][ico-download]][link-packagist]
-[![StyleCI](https://github.styleci.io/repos/169948762/shield?branch=master)](https://github.styleci.io/repos/169948762)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e6a80b17298cb4fcb56d/maintainability)](https://codeclimate.com/github/Payro/payment/maintainability)
-[![Quality Score][ico-code-quality]][link-code-quality]
-
-این پکیج برای پرداخت انلاین توسط درگاه های ملختف در لاراول ایجاد شده است.
-
-
-> این پکیج با درگاه های پرداخت مختلفی کار میکنه. در صورتی که درگاه مورد نظرتون رو در لیست درایورهای موجود پیدا نکردید میتونید برای درگاهی که استفاده میکنید درایور مورد نظرتون رو بسازید.
-
-
-- [داکیومنت فارسی][link-fa]
-- [english documents][link-en]
-
-
-در صورتی که از این پکیج خوشتون آمده و ازش استفاده میکنید میتونید با پرداخت مبلغ اندکی من رو حمایت کنید تا این پکیج رو بیشتر توسعه بدم و درگاه های جدیدتری بهش اظافه کنم
-
-[به منظور کمک مالی کلیک کنید](https://zarinp.al/@mahdikhanzadi) :sunglasses: :bowtie:
-
-
-# لیست محتوا
-
-- [درایور های موجود](#درایورهای-موجود)
-- [نصب](#نصب)
-- [تنظیمات](#تنظیمات)
-- [طریقه استفاده](#طریقه-استفاده)
-  - [کار با صورتحساب ها](#کار-با-صورتحساب-ها)
-  - [ثبت درخواست برای پرداخت صورتحساب](#ثبت-درخواست-برای-پرداخت-صورتحساب)
-  - [پرداخت صورتحساب](#پرداخت-صورتحساب)
-  - [اعتبار سنجی پرداخت](#اعتبار-سنجی-پرداخت)
-  - [ایجاد درایور دلخواه](#ایجاد-درایور-دلخواه)
-  - [متدهای سودمند](#متدهای-سودمند)
-- [تغییرات](#تغییرات)
-- [مشارکت کننده ها](#مشارکت-کننده-ها)
-- [امنیت](#امنیت)
-- [توسعه دهندگان](#توسعه-دهندگان)
-- [لایسنس](#لایسنس)
-
-# درایورهای موجود
-
-- [آسان پرداخت](https://asanpardakht.ir/)  :warning: (تست نشده)
-- [به پرداخت ملت (بانک ملت)](http://www.behpardakht.com/)  :warning: (تست نشده)
-- [پیرو](https://payro24.ir/) :heavy_check_mark:
-- [ایران کیش](http://irankish.com/) :heavy_check_mark:
-- [نکست پی](https://nextpay.ir/) :heavy_check_mark:
-- [پی ای ار](https://pay.ir/) :heavy_check_mark:
-- [بانک پارسیان](https://www.pec.ir/) :heavy_check_mark:
-- [بانک پاسارگاد](https://www.bpi.ir/) :heavy_check_mark:
-- [پی پینگ](https://www.payping.ir/) :heavy_check_mark:
-- [پی استار](http://paystar.ir/) :heavy_check_mark:
-- [پولام](https://poolam.ir/) :heavy_check_mark:
-- [سداد (بانک ملی)](https://sadadpsp.ir/) :heavy_check_mark:
-- [بانک سامان](https://www.sep.ir) :heavy_check_mark:
-- [یک پی](https://yekpay.com/) :heavy_check_mark:
-- [زرین پال](https://www.zarinpal.com/) :heavy_check_mark:
-- [زیبال](https://www.zibal.ir/) :heavy_check_mark:
-
-- درایورهای دیگر ساخته خواهند شد یا اینکه بسازید و درخواست `merge` بدید.
-
-> در صورتی که درایور مورد نظرتون موجود نیست, میتونید برای درگاه پرداخت موردنظرتون درایور بسازید.
+این پکیج برای پرداخت انلاین توسط درگاه پرداخت پیرو در لاراول ایجاد شده است.
 
 ## نصب
 
@@ -75,7 +13,7 @@
 </div>
 
 ``` bash
-$ composer require Payro/payment
+$ composer require payro/payment
 ```
 
 <div dir="rtl">
@@ -104,36 +42,22 @@ $ composer require Payro/payment
 
 <div dir="rtl">
 
-سپس دستور `php artisan vendor:publish` را اجرا کنید تا فایل `config/payment.php` درون دایرکتوری تنظیمات لاراول قرار بگیرد.
-
-درون فایل تنظیمات در قسمت `default driver` میتوانید درایوری که قصد استفاده از ان را دارید قرار دهید تا تمامی پرداخت ها از آن طریق انجام شود.
-
-
-</div>
-
-```php
-// Eg. if you want to use zarinpal.
-'default' => 'zarinpal',
-```
-
-<div dir="rtl">
-
-سپس تنظیمات مرتبط با درایوری که قصد استفاده از ان را دارید انجام دهید
+سپس تنظیمات درگاه پرداخت پیرو را انجام دهید
 
 </div>
 
 ```php
 'drivers' => [
-    'zarinpal' => [
-        // Fill all the credentials here.
-        'apiPurchaseUrl' => 'https://www.zarinpal.com/pg/rest/WebGate/PaymentRequest.json',
-        'apiPaymentUrl' => 'https://www.zarinpal.com/pg/StartPay/',
-        'apiVerificationUrl' => 'https://www.zarinpal.com/pg/rest/WebGate/PaymentVerification.json',
-        'merchantId' => '',
-        'callbackUrl' => 'http://yoursite.com/path/to',
-        'description' => 'payment in '.config('app.name'),
-    ],
-    ...
+        'payro24' => [
+            'apiPurchaseUrl' => 'https://api.payro24.ir/v1.0/payment',
+            'apiPaymentUrl' => 'https://payro24.ir/',
+            'apiSandboxPaymentUrl' => 'https://payro24.ir/p/ws-sandbox/',
+            'apiVerificationUrl' => 'https://api.payro24.ir/v1.0/payment/verify',
+            'merchantId' => '',
+            'callbackUrl' => 'http://yoursite.com/path/to',
+            'description' => 'payment in '.config('app.name'),
+            'sandbox' => false, // set it to true for test environments
+        ]
 ]
 ```
 
@@ -161,18 +85,7 @@ $invoice = new Invoice;
 
 # set invoice amount
 $invoice->amount(1000);
-
-# add invoice details : we have 4 syntax
-// 1
-$invoice->detail(['detailName' => 'your detail goes here']);
-// 2 
-$invoice->detail('detailName','your detail goes here');
-// 3
 $invoice->detail(['name1' => 'detail1','name2' => 'detail2']);
-// 4
-$invoice->detail('detailName1','your detail1 goes here')
-        ->detail('detailName2','your detail2 goes here');
-
 ```
 
 <div dir="rtl">
@@ -294,113 +207,7 @@ try {
 <div dir="rtl">
 
 
-در صورتی که پرداخت توسط کاربر به درستی انجام نشده باشه یک استثنا از نوع `Invalpayro24mentException` ایجاد میشود که حاوی پیام متناسب با پرداخت انجام شده است.
-
-#### ایجاد درایور دلخواه:
-
- برای ایجاد درایور جدید ابتدا نام (اسم) درایوری که قراره بسازید رو به لیست درایور ها اظافه کنید و لیست تنظیات مورد نیاز را نیز مشخص کنید.
-
-</div>
-
-```php
-'drivers' => [
-    'zarinpal' => [...],
-    'my_driver' => [
-        ... # Your Config Params here.
-    ]
-]
-```
-
-<div dir="rtl">
-
-
-کلاس درایوری که قصد ساختنش رو دارید باید کلاس `Payro\Payment\Abstracts\Driver` رو به ارث ببره.
-
-به عنوان مثال:
-
-</div>
-
-```php
-namespace App\Packages\PaymentDriver;
-
-use Payro\Payment\Abstracts\Driver;
-use Payro\Payment\Exceptions\Invalpayro24mentException;
-use Payro\Payment\{Contracts\ReceiptInterface, Invoice, Receipt};
-
-class MyDriver extends Driver
-{
-    protected $invoice; // invoice
-
-    protected $settings; // driver settings
-
-    public function __construct(Invoice $invoice, $settings)
-    {
-        $this->invoice($invoice); // set the invoice
-        $this->settings = (object) $settings; // set settings
-    }
-
-    // purchase the invoice, save its transactionId and finaly return it
-    public function purchase() {
-        // request for a payment transaction id
-        ...
-            
-        $this->invoice->transactionId($transId);
-        
-        return $transId;
-    }
-    
-    // redirect into bank using transactionId, to complete the payment
-    public function pay() {
-        // its better to set bankApiUrl in config/payment.php and retrieve it here:
-        $bankUrl = $this->settings->bankApiUrl; // bankApiUrl is the config name.
-
-        //prepare payment url
-        $payUrl = $bankUrl.$this->invoice->getTransactionId();
-
-        // redirect to the bank
-        return redirect()->to($payUrl);
-    }
-    
-    // verify the payment (we must verify to insure that user has paid the invoice)
-    public function verify() : ReceiptInterface {
-        $verifyPayment = $this->settings->verifyApiUrl;
-        
-        $verifyUrl = $verifyPayment.$this->invoice->getTransactionId();
-        
-        ...
-        
-        /**
-			then we send a request to $verifyUrl and if payment is not
-			we throw an Invalpayro24mentException with a suitable
-        **/
-        throw new Invalpayro24mentException('a suitable message');
-        
-        /**
-        	we create a receipt for this payment if everything goes normally.
-        **/
-        return new Receipt('driverName', 'payment_receipt_number');        
-    }
-}
-```
-
-<div dir="rtl">
-
-
-بعد از اینکه کلاس درایور خودتون رو ایجاد کردید به فایل `Config/payment.php` برید و درایور خودتون رو در قسمت `map` اظافه کنید.
-
-</div>
-
-```php
-'map' => [
-    ...
-    'my_driver' => App\Packages\PaymentDriver\MyDriver::class,
-]
-```
-
-<div dir="rtl">
-
-
-**نکته:** دقت کنید کلیدی که قسمت `map` قرار میدهید باید همنام با نامی باشد که در قسمت `drivers` قرار داده اید.
+در صورتی که پرداخت توسط کاربر به درستی انجام نشده باشه یک استثنا از نوع `InvalidPaymentException` ایجاد میشود که حاوی پیام متناسب با پرداخت انجام شده است.
 
 #### متدهای سودمند
 
@@ -449,31 +256,6 @@ class MyDriver extends Driver
 
 <div dir="rtl">
 
-- `via` : به منظور تغییر درایور در هنگام اجرای برنامه مورد استفاده قرار میگیرد
-
-</div>
-
-```php
-  # On the top of the file.
-  use Payro\Payment\Invoice;
-  use Payro\Payment\Facade\Payment;
-  ...
-  
-  # create new invoice
-  $invoice = (new Invoice)->amount(1000);
-  
-  # purchase the given invoice
-  Payment::via('driverName')->purchase(
-      $invoice, 
-      function($driver, $transactionId) {
-      // we can store $transactionId in database
-  	}
-  );
-```
-
-<div dir="rtl">
-
-
 #### رویدادها
 
 شما میتوانید درون برنامه خود دو رویداد را ثبت و ضبط کنید
@@ -481,38 +263,5 @@ class MyDriver extends Driver
 - **InvoicePurchasedEvent** : هنگامی که یک پرداخت به درستی ثبت شود این رویداد اتفاق میافتد.
 - **InvoiceVerifiedEvent** : هنگامی که یک پرداخت به درستی وریفای شود این رویداد اتفاق میافتد
 
-
-## تغییرات
-
-برای مشاهده آخرین تغییرات انجام شده در پکیج [قسمت تغییرات](CHANGELOG.md) را بررسی کنید.
-
-## مشارکت کننده ها
-
-برای مشاهده لیست مشارکت کننده ها [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) را بررسی کنید.
-
-## امنیت
-
-در صورتی که مشکل امنیتی در پکیج پیدا کردید به منظور رفع مشکل با ایمیل khanzadimahdi@gmail.com در ارتباط باشید.
-
-## توسعه دهندگان
-
-- [Mahdi khanzadi][link-author]
-- [All Contributors][link-contributors]
-
-## لایسنس
-
-توسعه و تولید تحت لایسنس MIT است. برای اطلاعات بیشتر [فایل لایسنس](LICENSE.md) را مطالعه کنید.
-
 </div>
 
-[ico-version]: https://img.shields.io/packagist/v/Payro/payment.svg?style=flat-square
-[ico-download]: https://img.shields.io/packagist/dt/Payro/payment.svg?color=%23F18&style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/Payro/payment.svg?label=Code%20Quality&style=flat-square
-
-[link-fa]: README-FA.md
-[link-en]: README.md
-[link-packagist]: https://packagist.org/packages/Payro/payment
-[link-code-quality]: https://scrutinizer-ci.com/g/Payro/payment
-[link-author]: https://github.com/khanzadimahdi
-[link-contributors]: ../../contributors
