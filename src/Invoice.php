@@ -1,9 +1,9 @@
 <?php
 
-namespace Shetabit\Payment;
+namespace Payro\Payment;
 
 use Ramsey\Uuid\Uuid;
-use Shetabit\Payment\Traits\HasDetail;
+use Payro\Payment\Traits\HasDetail;
 
 class Invoice
 {

@@ -98,13 +98,13 @@ In your `config/app.php` file add these two lines.
 # In your providers array.
 'providers' => [
     ...
-    Shetabit\Payment\Provider\PaymentServiceProvider::class,
+    Payro\Payment\Provider\PaymentServiceProvider::class,
 ],
 
 # In your aliases array.
 'aliases' => [
     ...
-    'Payment' => Shetabit\Payment\Facade\Payment::class,
+    'Payment' => Payro\Payment\Facade\Payment::class,
 ],
 ```
 
@@ -149,7 +149,7 @@ In your code, use it like the below:
 
 ```php
 # On the top of the file.
-use Shetabit\Payment\Invoice;
+use Payro\Payment\Invoice;
 ...
 
 # create new invoice
@@ -189,8 +189,8 @@ we purcahse the invoice to retrieve transaction id:
 
 ```php
 # On the top of the file.
-use Shetabit\Payment\Invoice;
-use Shetabit\Payment\Facade\Payment;
+use Payro\Payment\Invoice;
+use Payro\Payment\Facade\Payment;
 ...
 
 # create new invoice
@@ -221,8 +221,8 @@ after purchasing the invoice, we can redirect user to the bank's payment page:
 
 ```php
 # On the top of the file.
-use Shetabit\Payment\Invoice;
-use Shetabit\Payment\Facade\Payment;
+use Payro\Payment\Invoice;
+use Payro\Payment\Facade\Payment;
 ...
 
 # create new invoice
@@ -249,8 +249,8 @@ when user completes the payment, the bank redirects him/her to your website, the
 
 ```php
 # On the top of the file.
-use Shetabit\Payment\Facade\Payment;
-use Shetabit\Payment\Exceptions\Invalpayro24mentException;
+use Payro\Payment\Facade\Payment;
+use Payro\Payment\Exceptions\Invalpayro24mentException;
 ...
 
 # you need to verify the payment to insure the invoice has been paid successfully
@@ -279,8 +279,8 @@ try {
 
   ```php
   # On the top of the file.
-  use Shetabit\Payment\Invoice;
-  use Shetabit\Payment\Facade\Payment;
+  use Payro\Payment\Invoice;
+  use Payro\Payment\Facade\Payment;
   ...
   
   # create new invoice
@@ -299,8 +299,8 @@ try {
 
   ```php
   # On the top of the file.
-  use Shetabit\Payment\Invoice;
-  use Shetabit\Payment\Facade\Payment;
+  use Payro\Payment\Invoice;
+  use Payro\Payment\Facade\Payment;
   ...
   
   # purchase (we set invoice to null)
@@ -316,8 +316,8 @@ try {
 
   ```php
   # On the top of the file.
-  use Shetabit\Payment\Invoice;
-  use Shetabit\Payment\Facade\Payment;
+  use Payro\Payment\Invoice;
+  use Payro\Payment\Facade\Payment;
   ...
   
   # create new invoice
@@ -336,8 +336,8 @@ try {
 
   ```php
   # On the top of the file.
-  use Shetabit\Payment\Invoice;
-  use Shetabit\Payment\Facade\Payment;
+  use Payro\Payment\Invoice;
+  use Payro\Payment\Facade\Payment;
   ...
   
   # create new invoice
@@ -381,9 +381,9 @@ Ex. You created a class : `App\Packages\PaymentDriver\MyDriver`.
 ```php
 namespace App\Packages\PaymentDriver;
 
-use Shetabit\Payment\Abstracts\Driver;
-use Shetabit\Payment\Exceptions\Invalpayro24mentException;
-use Shetabit\Payment\{Contracts\ReceiptInterface, Invoice, Receipt};
+use Payro\Payment\Abstracts\Driver;
+use Payro\Payment\Exceptions\Invalpayro24mentException;
+use Payro\Payment\{Contracts\ReceiptInterface, Invoice, Receipt};
 
 class MyDriver extends Driver
 {

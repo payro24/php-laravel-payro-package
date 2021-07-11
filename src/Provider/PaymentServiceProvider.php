@@ -1,8 +1,8 @@
 <?php
 
-namespace Shetabit\Payment\Provider;
+namespace Payro\Payment\Provider;
 
-use Shetabit\Payment\PaymentManager;
+use Payro\Payment\PaymentManager;
 use Illuminate\Support\ServiceProvider;
 
 class PaymentServiceProvider extends ServiceProvider

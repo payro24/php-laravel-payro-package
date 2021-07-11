@@ -47,6 +47,6 @@ return [
     |
     */
     'map' => [
-        'payro24' => \Shetabit\Payment\Drivers\payro24\payro24::class,
+        'payro24' => \Payro\Payment\Drivers\payro24\payro24::class,
     ]
 ];

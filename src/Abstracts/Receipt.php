@@ -1,9 +1,9 @@
 <?php
 
-namespace Shetabit\Payment\Abstracts;
+namespace Payro\Payment\Abstracts;
 
 use Carbon\Carbon;
-use Shetabit\Payment\Contracts\ReceiptInterface;
+use Payro\Payment\Contracts\ReceiptInterface;
 
 abstract class Receipt implements ReceiptInterface
 {

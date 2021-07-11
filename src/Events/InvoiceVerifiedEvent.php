@@ -1,6 +1,6 @@
 <?php
 
-namespace Shetabit\Payment\Events;
+namespace Payro\Payment\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -9,9 +9,9 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Shetabit\Payment\Contracts\DriverInterface;
-use Shetabit\Payment\Contracts\ReceiptInterface;
-use Shetabit\Payment\Invoice;
+use Payro\Payment\Contracts\DriverInterface;
+use Payro\Payment\Contracts\ReceiptInterface;
+use Payro\Payment\Invoice;
 
 class InvoiceVerifiedEvent
 {

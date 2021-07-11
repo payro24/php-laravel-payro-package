@@ -1,14 +1,14 @@
 <?php
 
-namespace Shetabit\Payment\Drivers\payro24;
+namespace Payro\Payment\Drivers\payro24;
 
 use GuzzleHttp\Client;
-use Shetabit\Payment\Abstracts\Driver;
-use Shetabit\Payment\Exceptions\Invalpayro24mentException;
-use Shetabit\Payment\Exceptions\PurchaseFailedException;
-use Shetabit\Payment\Contracts\ReceiptInterface;
-use Shetabit\Payment\Invoice;
-use Shetabit\Payment\Receipt;
+use Payro\Payment\Abstracts\Driver;
+use Payro\Payment\Exceptions\Invalpayro24mentException;
+use Payro\Payment\Exceptions\PurchaseFailedException;
+use Payro\Payment\Contracts\ReceiptInterface;
+use Payro\Payment\Invoice;
+use Payro\Payment\Receipt;
 
 class payro24 extends Driver
 {

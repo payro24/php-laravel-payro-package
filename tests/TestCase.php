@@ -1,9 +1,9 @@
 <?php
 
-namespace Shetabit\Payment\Tests;
+namespace Payro\Payment\Tests;
 
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use Shetabit\Payment\Tests\Mocks\Drivers\BarDriver;
+use Payro\Payment\Tests\Mocks\Drivers\BarDriver;
 
 class TestCase extends BaseTestCase
 {

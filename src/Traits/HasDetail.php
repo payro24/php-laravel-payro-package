@@ -1,6 +1,6 @@
 <?php
 
-namespace Shetabit\Payment\Traits;
+namespace Payro\Payment\Traits;
 
 trait HasDetail
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Shetabit\Payment\Abstracts;
+namespace Payro\Payment\Abstracts;
 
-use Shetabit\Payment\Contracts\DriverInterface;
-use Shetabit\Payment\Contracts\ReceiptInterface;
-use Shetabit\Payment\Invoice;
+use Payro\Payment\Contracts\DriverInterface;
+use Payro\Payment\Contracts\ReceiptInterface;
+use Payro\Payment\Invoice;
 
 abstract class Driver implements DriverInterface
 {

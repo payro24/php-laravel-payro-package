@@ -2,12 +2,12 @@
 
 namespace Payro\Payment;
 
-use Shetabit\Payment\Contracts\DriverInterface;
-use Shetabit\Payment\Contracts\ReceiptInterface;
-use Shetabit\Payment\Events\InvoicePurchasedEvent;
-use Shetabit\Payment\Events\InvoiceVerifiedEvent;
-use Shetabit\Payment\Exceptions\DriverNotFoundException;
-use Shetabit\Payment\Exceptions\InvoiceNotFoundException;
+use Payro\Payment\Contracts\DriverInterface;
+use Payro\Payment\Contracts\ReceiptInterface;
+use Payro\Payment\Events\InvoicePurchasedEvent;
+use Payro\Payment\Events\InvoiceVerifiedEvent;
+use Payro\Payment\Exceptions\DriverNotFoundException;
+use Payro\Payment\Exceptions\InvoiceNotFoundException;
 
 class PaymentManager
 {

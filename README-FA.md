@@ -92,13 +92,13 @@ $ composer require Payro/payment
 # In your providers array.
 'providers' => [
     ...
-    Shetabit\Payment\Provider\PaymentServiceProvider::class,
+    Payro\Payment\Provider\PaymentServiceProvider::class,
 ],
 
 # In your aliases array.
 'aliases' => [
     ...
-    'Payment' => Shetabit\Payment\Facade\Payment::class,
+    'Payment' => Payro\Payment\Facade\Payment::class,
 ],
 ```
 
@@ -153,7 +153,7 @@ $ composer require Payro/payment
 
 ```php
 # On the top of the file.
-use Shetabit\Payment\Invoice;
+use Payro\Payment\Invoice;
 ...
 
 # create new invoice
@@ -198,8 +198,8 @@ $invoice->detail('detailName1','your detail1 goes here')
 
 ```php
 # On the top of the file.
-use Shetabit\Payment\Invoice;
-use Shetabit\Payment\Facade\Payment;
+use Payro\Payment\Invoice;
+use Payro\Payment\Facade\Payment;
 ...
 
 # create new invoice
@@ -234,8 +234,8 @@ Payment::callbackUrl('http://yoursite.com/verify')->purchase(
 
 ```php
 # On the top of the file.
-use Shetabit\Payment\Invoice;
-use Shetabit\Payment\Facade\Payment;
+use Payro\Payment\Invoice;
+use Payro\Payment\Facade\Payment;
 ...
 
 # create new invoice
@@ -267,8 +267,8 @@ return Payment::purchase(
 
 ```php
 # On the top of the file.
-use Shetabit\Payment\Facade\Payment;
-use Shetabit\Payment\Exceptions\Invalpayro24mentException;
+use Payro\Payment\Facade\Payment;
+use Payro\Payment\Exceptions\Invalpayro24mentException;
 ...
 
 # you need to verify the payment to insure the invoice has been paid successfully
@@ -323,9 +323,9 @@ try {
 ```php
 namespace App\Packages\PaymentDriver;
 
-use Shetabit\Payment\Abstracts\Driver;
-use Shetabit\Payment\Exceptions\Invalpayro24mentException;
-use Shetabit\Payment\{Contracts\ReceiptInterface, Invoice, Receipt};
+use Payro\Payment\Abstracts\Driver;
+use Payro\Payment\Exceptions\Invalpayro24mentException;
+use Payro\Payment\{Contracts\ReceiptInterface, Invoice, Receipt};
 
 class MyDriver extends Driver
 {
@@ -410,8 +410,8 @@ class MyDriver extends Driver
 
 ```php
   # On the top of the file.
-  use Shetabit\Payment\Invoice;
-  use Shetabit\Payment\Facade\Payment;
+  use Payro\Payment\Invoice;
+  use Payro\Payment\Facade\Payment;
   ...
   
   # create new invoice
@@ -434,8 +434,8 @@ class MyDriver extends Driver
 
 ```php
   # On the top of the file.
-  use Shetabit\Payment\Invoice;
-  use Shetabit\Payment\Facade\Payment;
+  use Payro\Payment\Invoice;
+  use Payro\Payment\Facade\Payment;
   ...
   
   # purchase (we set invoice to null)
@@ -455,8 +455,8 @@ class MyDriver extends Driver
 
 ```php
   # On the top of the file.
-  use Shetabit\Payment\Invoice;
-  use Shetabit\Payment\Facade\Payment;
+  use Payro\Payment\Invoice;
+  use Payro\Payment\Facade\Payment;
   ...
   
   # create new invoice

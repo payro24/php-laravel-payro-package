@@ -1,6 +1,6 @@
 <?php
 
-namespace Shetabit\Payment\Exceptions;
+namespace Payro\Payment\Exceptions;
 
 class InvoiceNotFoundException extends \Exception
 {

@@ -2,8 +2,8 @@
 
 namespace Payro\Payment;
 
-use Shetabit\Payment\Abstracts\Receipt as ReceiptAbstract;
-use Shetabit\Payment\Traits\HasDetail;
+use Payro\Payment\Abstracts\Receipt as ReceiptAbstract;
+use Payro\Payment\Traits\HasDetail;
 
 class Receipt extends ReceiptAbstract
 {

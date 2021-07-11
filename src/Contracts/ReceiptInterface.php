@@ -1,6 +1,6 @@
 <?php
 
-namespace Shetabit\Payment\Contracts;
+namespace Payro\Payment\Contracts;
 
 use Carbon\Carbon;
 

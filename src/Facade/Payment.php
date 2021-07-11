@@ -1,6 +1,6 @@
 <?php
 
-namespace Shetabit\Payment\Facade;
+namespace Payro\Payment\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Facade;
  * Class Sms
  *
  * @package Payro\Payment\Facade
- * @see \Shetabit\Payment\PaymentManager
+ * @see \Payro\Payment\PaymentManager
  */
 class Payment extends Facade
 {
