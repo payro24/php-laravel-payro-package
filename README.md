@@ -20,6 +20,8 @@ $ composer require payro/payment
 
 ## تنظیمات
 
+سپس دستور `php artisan vendor:publish` را اجرا کنید تا فایل تنظیمات درون دایرکتوری `config/payment.php` ساخته شود 
+
 درصورتی که از `Laravel 5.5` یا ورژن های بالاتر استفاده میکنید نیازی به انجام تنظیمات `providers` و `alias` نخواهید داشت.
 
 درون فایل `config/app.php` دستورات زیر را وارد کنید
@@ -51,7 +53,6 @@ $ composer require payro/payment
         'payro24' => [
             'apiPurchaseUrl' => 'https://api.payro24.ir/v1.0/payment',
             'apiPaymentUrl' => 'https://payro24.ir/',
-            'apiSandboxPaymentUrl' => 'https://payro24.ir/p/ws-sandbox/',
             'apiVerificationUrl' => 'https://api.payro24.ir/v1.0/payment/verify',
             'merchantId' => '',
             'callbackUrl' => 'http://yoursite.com/path/to',
@@ -100,7 +101,6 @@ $invoice->detail(['name1' => 'detail1','name2' => 'detail2']);
 - `getAmount` : هزینه ی صورتحساب را برمیگرداند
 - `transactionId` : شماره تراکنش صورتحساب را مشخص میکند
 - `getTransactionId` : شماره تراکنش صورتحساب را برمیگرداند
-- `via` : درایوری که قصد پرداخت صورتحساب با آن را داریم مشخص میکند
 - `getDriver` : درایور انتخاب شده را برمیگرداند
 
 #### ثبت درخواست برای پرداخت صورتحساب
@@ -181,7 +181,7 @@ return Payment::purchase(
 ```php
 # On the top of the file.
 use Payro\Payment\Facade\Payment;
-use Payro\Payment\Exceptions\Invalpayro24mentException;
+use Payro\Payment\Exceptions\InvalidPaymentException;
 ...
 
 # you need to verify the payment to insure the invoice has been paid successfully
@@ -194,7 +194,7 @@ try {
     echo $receipt->getReferenceId();    
 
     ...
-} catch (Invalpayro24mentException $exception) {
+} catch (InvalidPaymentException $exception) {
     /**
     	when payment is not verified , it throw an exception.
     	we can catch the excetion to handle invalid payments.

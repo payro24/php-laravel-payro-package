@@ -4,7 +4,7 @@ namespace Payro\Payment\Drivers\payro24;
 
 use GuzzleHttp\Client;
 use Payro\Payment\Abstracts\Driver;
-use Payro\Payment\Exceptions\Invalpayro24mentException;
+use Payro\Payment\Exceptions\InvalidPaymentException;
 use Payro\Payment\Exceptions\PurchaseFailedException;
 use Payro\Payment\Contracts\ReceiptInterface;
 use Payro\Payment\Invoice;
@@ -80,6 +80,8 @@ class payro24 extends Driver
             $desc = $details['description'];
         }
 
+        echo $phone;
+        exit();
         $data = array(
             'order_id' => $this->invoice->getUuid(),
             'amount' => $this->invoice->getAmount(),
@@ -145,7 +147,7 @@ class payro24 extends Driver
      *
      * @return mixed|void
      *
-     * @throws Invalpayro24mentException
+     * @throws InvalidPaymentException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function verify() : ReceiptInterface
@@ -198,7 +200,7 @@ class payro24 extends Driver
      *
      * @param $status
      *
-     * @throws Invalpayro24mentException
+     * @throws InvalidPaymentException
      */
     private function notVerified($status)
     {
@@ -232,9 +234,9 @@ class payro24 extends Driver
             "54" => "مدت زمان تایید پرداخت سپری شده است.",
         );
         if (array_key_exists($status, $translations)) {
-            throw new Invalpayro24mentException($translations[$status]);
+            throw new InvalidPaymentException($translations[$status]);
         } else {
-            throw new Invalpayro24mentException('خطای ناشناخته ای رخ داده است.');
+            throw new InvalidPaymentException('خطای ناشناخته ای رخ داده است.');
         }
     }
 }
