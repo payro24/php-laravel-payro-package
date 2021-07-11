@@ -43,7 +43,7 @@ class payro24 extends Driver
     public function __construct(Invoice $invoice, $settings)
     {
         $this->invoice($invoice);
-        $this->settings = (object) $settings;
+        $this->settings = (object)$settings;
         $this->client = new Client();
     }
 
@@ -80,18 +80,16 @@ class payro24 extends Driver
             $desc = $details['description'];
         }
 
-        echo $phone;
-        exit();
         $data = array(
             'order_id' => $this->invoice->getUuid(),
             'amount' => $this->invoice->getAmount(),
-            'name' => $details['name'] ?? null,
-            'phone' => $phone,
-            'mail' => $mail,
-            'desc' => $desc,
             'callback' => $this->settings->callbackUrl,
-            'reseller' => $details['reseller'] ?? null,
         );
+
+        if ($details['name'] !== null) array_push($data, ['name' => $details['name']]);
+        if ($phone !== null) array_push($data, ['phone' => $phone]);
+        if ($mail !== null) array_push($data, ['mail' => $mail]);
+        if ($desc !== null) array_push($data, ['desc' => $desc]);
 
         $response = $this
             ->client
@@ -103,7 +101,7 @@ class payro24 extends Driver
                     "headers" => [
                         'P-TOKEN' => $this->settings->merchantId,
                         'Content-Type' => 'application/json',
-                        'P-SANDBOX' => (int) $this->settings->sandbox,
+                        'P-SANDBOX' => (int)$this->settings->sandbox,
                     ],
                     "http_errors" => false,
                 ]
@@ -136,7 +134,7 @@ class payro24 extends Driver
             $apiUrl = $this->settings->apiSandboxPaymentUrl;
         }
 
-        $payUrl = $apiUrl.$this->invoice->getTransactionId();
+        $payUrl = $apiUrl . $this->invoice->getTransactionId();
 
         // redirect using laravel logic
         return redirect()->to($payUrl);
@@ -150,7 +148,7 @@ class payro24 extends Driver
      * @throws InvalidPaymentException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function verify() : ReceiptInterface
+    public function verify(): ReceiptInterface
     {
         $data = [
             'id' => $this->invoice->getTransactionId() ?? request()->input('id'),
@@ -165,7 +163,7 @@ class payro24 extends Driver
                 "headers" => [
                     'P-TOKEN' => $this->settings->merchantId,
                     'Content-Type' => 'application/json',
-                    'P-SANDBOX' => (int) $this->settings->sandbox,
+                    'P-SANDBOX' => (int)$this->settings->sandbox,
                 ],
                 "http_errors" => false,
             ]
