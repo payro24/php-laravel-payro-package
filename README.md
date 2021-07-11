@@ -1,4 +1,4 @@
-<p align="center"><img src="resources/images/logo.png?raw=true"></p>
+<p align="center"><img src="resources/images/logo.png"></p>
 
 <div dir=rtl>
 
