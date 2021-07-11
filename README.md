@@ -1,98 +1,30 @@
-<p align="center"><img src="resources/images/payment.png?raw=true"></p>
+<p align="center"><img src="resources/images/logo.png?raw=true"></p>
 
-# Laravel Payment Gateway
+<div dir=rtl>
 
+# پیرو۲۴
 
+این پکیج برای پرداخت انلاین توسط درگاه پرداخت پیرو در لاراول ایجاد شده است.
 
+## نصب
 
-[![Software License][ico-license]](LICENSE.md)
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads on Packagist][ico-download]][link-packagist]
-[![StyleCI](https://github.styleci.io/repos/169948762/shield?branch=master)](https://github.styleci.io/repos/169948762)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e6a80b17298cb4fcb56d/maintainability)](https://codeclimate.com/github/Payro/payment/maintainability)
-[![Quality Score][ico-code-quality]][link-code-quality]
+نصب با استفاده از کامپوزر
 
-This is a Laravel Package for Payment Gateway Integration. This package supports `Laravel 5.8+`.
-
-[Donate me](https://yekpay.me/mahdikhanzadi) if you like this package :sunglasses: :bowtie:
-
-> This packages works with multiple drivers, and you can create custom drivers if there are not available in the [current drivers list](#list-of-available-drivers) (below list).
-
-- [داکیومنت فارسی][link-fa]
-- [english documents][link-en]
-
-# List of contents
-
-- [Available drivers](#list-of-available-drivers)
-- [Install](#install)
-- [Configure](#configure)
-- [How to use](#how-to-use)
-  - [Working with invoices](#working-with-invoices)
-  - [Purchase invoice](#purchase-invoice)
-  - [Pay invoice](#pay-invoice)
-  - [Verify payment](#verify-payment)
-  - [Useful methods](#useful-methods)  
-  	- [Set callbackUrl on the fly  (runtime)](#callbackurl--can-be-used-to-change-callbackurl-on-the-runtime)
-  	- [Set payment's amount (invoice amount)](#amount-you-can-set-the-invoice-amount-directly)
-  	- [Change driver's on the fly (runtime)](#via--change-driver-on-the-fly)
-  	- [Change driver's confings on the fly (runtime)](#config--set-driver-configs-on-the-fly)  
-  - [Create custom drivers](#create-custom-drivers)
-  - [Events](#events)
-- [Change log](#change-log)
-- [Contributing](#contributing)
-- [Security](#security)
-- [Credits](#credits)
-- [License](#license)
-
-# List of available drivers
-- [asanpardakht](https://asanpardakht.ir/) :warning: (not tested)
-- [behpardakht (mellat)](http://www.behpardakht.com/) :warning: (not tested)
-- [payro24](https://payro24.ir/) :heavy_check_mark:
-- [irankish](http://irankish.com/) :heavy_check_mark:
-- [nextpay](https://nextpay.ir/) :heavy_check_mark:
-- [parsian](https://www.pec.ir/) :heavy_check_mark:
-- [payir](https://pay.ir/) :heavy_check_mark:
-- [payping](https://www.payping.ir/) :heavy_check_mark:
-- [paystar](http://paystar.ir/) :heavy_check_mark:
-- [poolam](https://poolam.ir/) :heavy_check_mark:
-- [sadad (melli)](https://sadadpsp.ir/) :heavy_check_mark:
-- [saman](https://www.sep.ir) :heavy_check_mark:
-- [yekpay](https://yekpay.com/) :heavy_check_mark:
-- [zarinpal](https://www.zarinpal.com/) :heavy_check_mark:
-- [zibal](https://www.zibal.ir/) :heavy_check_mark:
-- Others are under way.
-
-**Help me to add below gateways by creating `pull requests`**
-
-- stripe
-- paypal
-- authorize
-- 2checkout
-- braintree
-- skrill
-- payU
-- amazon payments
-- wepay
-- payoneer
-- paysimple
-- saderat
-- pasargad
-
-> you can create your own custom driver if not  exists in the list , read the `Create custom drivers` section.
-
-## Install
-
-Via Composer
+</div>
 
 ``` bash
-$ composer require Payro/payment
+$ composer require payro/payment
 ```
 
-## Configure
+<div dir="rtl">
 
-If you are using `Laravel 5.5` or higher then you don't need to add the provider and alias.
+## تنظیمات
 
-In your `config/app.php` file add these two lines.
+درصورتی که از `Laravel 5.5` یا ورژن های بالاتر استفاده میکنید نیازی به انجام تنظیمات `providers` و `alias` نخواهید داشت.
+
+درون فایل `config/app.php` دستورات زیر را وارد کنید
+
+</div>
 
 ```php
 # In your providers array.
@@ -108,44 +40,40 @@ In your `config/app.php` file add these two lines.
 ],
 ```
 
-then run `php artisan vendor:publish` to publish `config/payment.php` file in your config directory.
+<div dir="rtl">
 
-In the config file you can set the `default driver` to use for all your payments. But you can also change the driver at runtime.
+سپس تنظیمات درگاه پرداخت پیرو را انجام دهید
 
-Choose what gateway you would like to use in your application. Then make that as default driver so that you don't have to specify that everywhere. But, you can also use multiple gateways in a project.
-
-```php
-// Eg. if you want to use zarinpal.
-'default' => 'zarinpal',
-```
-
-Then fill the credentials for that gateway in the drivers array.
+</div>
 
 ```php
 'drivers' => [
-    'zarinpal' => [
-        // Fill all the credentials here.
-        'apiPurchaseUrl' => 'https://www.zarinpal.com/pg/rest/WebGate/PaymentRequest.json',
-        'apiPaymentUrl' => 'https://www.zarinpal.com/pg/StartPay/',
-        'apiVerificationUrl' => 'https://www.zarinpal.com/pg/rest/WebGate/PaymentVerification.json',
-        'merchantId' => '',
-        'callbackUrl' => 'http://yoursite.com/path/to',
-        'description' => 'payment in '.config('app.name'),
-    ],
-    ...
+        'payro24' => [
+            'apiPurchaseUrl' => 'https://api.payro24.ir/v1.0/payment',
+            'apiPaymentUrl' => 'https://payro24.ir/',
+            'apiSandboxPaymentUrl' => 'https://payro24.ir/p/ws-sandbox/',
+            'apiVerificationUrl' => 'https://api.payro24.ir/v1.0/payment/verify',
+            'merchantId' => '',
+            'callbackUrl' => 'http://yoursite.com/path/to',
+            'description' => 'payment in '.config('app.name'),
+            'sandbox' => false, // set it to true for test environments
+        ]
 ]
 ```
 
-## How to use
+<div dir="rtl">
 
-your `Invoice` holds your payment details, so we talk about `Invoice` class at first. 
+## طریقه استفاده
 
-#### Working with invoices
+در تمامی پرداخت ها اطلاعات پرداخت درون صورتحساب شما نگهداری میشود. برای استفاده از پکیج ابتدا نحوه ی استفاده از کلاس `Invoice` به منظور کار با صورتحساب ها را توضیح میدهیم.
 
-before doing any thing you need to use `Invoice` class to create an invoice.
+#### کار با صورتحساب ها
 
+قبل از انجام هرکاری نیاز به ایجاد یک صورتحساب دارید. برای ایجاد صورتحساب میتوانید از کلاس `Invoice` استفاده کنید.
 
-In your code, use it like the below:
+درون کد خودتون به شکل زیر عمل کنید:
+
+</div>
 
 ```php
 # On the top of the file.
@@ -157,35 +85,29 @@ $invoice = new Invoice;
 
 # set invoice amount
 $invoice->amount(1000);
-
-# add invoice details : we have 4 syntax
-// 1
-$invoice->detail(['detailName' => 'your detail goes here']);
-// 2 
-$invoice->detail('detailName','your detail goes here');
-// 3
 $invoice->detail(['name1' => 'detail1','name2' => 'detail2']);
-// 4
-$invoice->detail('detailName1','your detail1 goes here')
-        ->detail('detailName2','your detail2 goes here');
-
 ```
-available methods:
 
-- `uuid` : set the invoice's unique id
-- `getUuid` : retriev the invoice's current unique id
-- `detail` : attach some custom details into invoice
-- `getDetails` : retrieve all custom details 
-- `amount` : set the invoice's amount
-- `getAmount` : retrieve invoice's amount
-- `transactionId` : set invoice's payment transaction id
-- `getTransactionId` : retrieve payment's transaction id
-- `via` : set a driver we use to pay the invoice
-- `getDriver` : retrieve the driver
+<div dir="rtl">
 
-#### Purchase invoice
-in order to pay the invoice, we need the payment's transactionId.
-we purcahse the invoice to retrieve transaction id:
+متدهای موجود برای کار با صورتحساب ها:
+
+- `uuid` : یک ایدی یونیک برای صورتحساب تنظیم میکند
+- `getUuid` : ایدی یونیک صورتحساب را برمیگرداند
+- `detail` : توضیحات یا مواردی که مرتبط به صورتحساب است را به صورتحساب اظافه میکند
+- `getDetails` : تمامی موارد مرتبطی که به صورتحساب افزوده شده است را برمیگرداند
+- `amount` : مقدار هزینه ای که باید پرداخت شود را مشخص میکند
+- `getAmount` : هزینه ی صورتحساب را برمیگرداند
+- `transactionId` : شماره تراکنش صورتحساب را مشخص میکند
+- `getTransactionId` : شماره تراکنش صورتحساب را برمیگرداند
+- `via` : درایوری که قصد پرداخت صورتحساب با آن را داریم مشخص میکند
+- `getDriver` : درایور انتخاب شده را برمیگرداند
+
+#### ثبت درخواست برای پرداخت صورتحساب
+به منظور پرداخت تمامی صورتحساب ها به یک شماره تراکنش بانکی یا `transactionId` نیاز خواهیم داشت.
+با ثبت درخواست به منظور پرداخت میتوان شماره تراکنش بانکی را دریافت کرد:
+
+</div>
 
 ```php
 # On the top of the file.
@@ -215,9 +137,13 @@ Payment::callbackUrl('http://yoursite.com/verify')->purchase(
 );
 ```
 
-#### Pay invoice
+<div dir="rtl">
 
-after purchasing the invoice, we can redirect user to the bank's payment page:
+#### پرداخت صورتحساب
+
+با استفاده از شماره تراکنش یا `transactionId` میتوانیم کاربر را به صفحه ی پرداخت بانک هدایت کنیم:
+
+</div>
 
 ```php
 # On the top of the file.
@@ -243,9 +169,14 @@ return Payment::purchase(
 )->pay();
 ```
 
-#### Verify payment
+<div dir="rtl">
 
-when user completes the payment, the bank redirects him/her to your website, then you need to **verify your payment** in order to insure the `invoice` has been **paid**.
+
+#### اعتبار سنجی پرداخت
+
+بعد از پرداخت شدن صورتحساب توسط کاربر, بانک کاربر را به یکی از صفحات سایت ما برمیگردونه و ما با اعتبار سنجی میتونیم متوجه بشیم کاربر پرداخت رو انجام داده یا نه!
+
+</div>
 
 ```php
 # On the top of the file.
@@ -260,7 +191,7 @@ try {
 	$receipt = Payment::amount(1000)->transactionId($transaction_id)->verify();
 
     // you can show payment's referenceId to user
-    echo $receipt->getReferenceId();
+    echo $receipt->getReferenceId();    
 
     ...
 } catch (Invalpayro24mentException $exception) {
@@ -273,11 +204,18 @@ try {
 }
 ```
 
-#### Useful methods
+<div dir="rtl">
 
-- ###### `callbackUrl` : can be used to change callbackUrl on the runtime.
 
-  ```php
+در صورتی که پرداخت توسط کاربر به درستی انجام نشده باشه یک استثنا از نوع `InvalidPaymentException` ایجاد میشود که حاوی پیام متناسب با پرداخت انجام شده است.
+
+#### متدهای سودمند
+
+- `callbackUrl` : با استفاده از این متد به صورت داینامیک میتوانید ادرس صفحه ای که بعد از پرداخت انلاین کاربر به ان هدایت میشود را مشخص کنید
+
+</div>
+
+```php
   # On the top of the file.
   use Payro\Payment\Invoice;
   use Payro\Payment\Facade\Payment;
@@ -293,11 +231,15 @@ try {
       // we can store $transactionId in database
   	}
   );
-  ```
+```
 
-- ###### `amount`: you can set the invoice amount directly
+<div dir="rtl">
 
-  ```php
+- `amount` : به کمک این متد میتوانید به صورت مستقیم هزینه صورتحساب را مشخص کنید
+
+</div>
+
+```php
   # On the top of the file.
   use Payro\Payment\Invoice;
   use Payro\Payment\Facade\Payment;
@@ -310,184 +252,16 @@ try {
       // we can store $transactionId in database
   	}
   );
-  ```
-
-- ###### `via` : change driver on the fly
-
-  ```php
-  # On the top of the file.
-  use Payro\Payment\Invoice;
-  use Payro\Payment\Facade\Payment;
-  ...
-  
-  # create new invoice
-  $invoice = (new Invoice)->amount(1000);
-  
-  # purchase the given invoice
-  Payment::via('driverName')->purchase(
-      $invoice, 
-      function($driver, $transactionId) {
-      // we can store $transactionId in database
-  	}
-  );
-  ```
-  
-- ###### `config` : set driver configs on the fly
-
-  ```php
-  # On the top of the file.
-  use Payro\Payment\Invoice;
-  use Payro\Payment\Facade\Payment;
-  ...
-  
-  # create new invoice
-  $invoice = (new Invoice)->amount(1000);
-  
-  # purchase the given invoice with custom driver configs
-  Payment::config('mechandId', 'your mechand id')->purchase(
-      $invoice,
-      function($driver, $transactionId) {
-      // we can store $transactionId in database
-  	}
-  );
-
-  # and we can also change multiple configs together
-  Payment::config(['key1' => 'value1', 'key2' => 'value2'])->purchase(
-      $invoice,
-      function($driver, $transactionId) {
-      // we can store $transactionId in database
-  	}
-  );
-  ```
-
-#### Create custom drivers:
-
-First you have to add the name of your driver, in the drivers array and also you can specify any config parameters you want.
-
-```php
-'drivers' => [
-    'zarinpal' => [...],
-    'my_driver' => [
-        ... # Your Config Params here.
-    ]
-]
 ```
 
-Now you have to create a Driver Map Class that will be used to pay invoices.
-In your driver, You just have to extend `Payro\Payment\Abstracts\Driver`.
+<div dir="rtl">
 
-Ex. You created a class : `App\Packages\PaymentDriver\MyDriver`.
+#### رویدادها
 
-```php
-namespace App\Packages\PaymentDriver;
+شما میتوانید درون برنامه خود دو رویداد را ثبت و ضبط کنید
 
-use Payro\Payment\Abstracts\Driver;
-use Payro\Payment\Exceptions\Invalpayro24mentException;
-use Payro\Payment\{Contracts\ReceiptInterface, Invoice, Receipt};
+- **InvoicePurchasedEvent** : هنگامی که یک پرداخت به درستی ثبت شود این رویداد اتفاق میافتد.
+- **InvoiceVerifiedEvent** : هنگامی که یک پرداخت به درستی وریفای شود این رویداد اتفاق میافتد
 
-class MyDriver extends Driver
-{
-    protected $invoice; // invoice
+</div>
 
-    protected $settings; // driver settings
-
-    public function __construct(Invoice $invoice, $settings)
-    {
-        $this->invoice($invoice); // set the invoice
-        $this->settings = (object) $settings; // set settings
-    }
-
-    // purchase the invoice, save its transactionId and finaly return it
-    public function purchase() {
-        // request for a payment transaction id
-        ...
-            
-        $this->invoice->transactionId($transId);
-        
-        return $transId;
-    }
-    
-    // redirect into bank using transactionId, to complete the payment
-    public function pay() {
-        // its better to set bankApiUrl in config/payment.php and retrieve it here:
-        $bankUrl = $this->settings->bankApiUrl; // bankApiUrl is the config name.
-
-        //prepare payment url
-        $payUrl = $bankUrl.$this->invoice->getTransactionId();
-
-        // redirect to the bank
-        return redirect()->to($payUrl);
-    }
-    
-    // verify the payment (we must verify to insure that user has paid the invoice)
-    public function verify() : ReceiptInterface {
-        $verifyPayment = $this->settings->verifyApiUrl;
-        
-        $verifyUrl = $verifyPayment.$this->invoice->getTransactionId();
-        
-        ...
-        
-        /**
-			then we send a request to $verifyUrl and if payment is not
-			we throw an Invalpayro24mentException with a suitable
-        **/
-        throw new Invalpayro24mentException('a suitable message');
-        
-        /**
-        	we create a receipt for this payment if everything goes normally.
-        **/
-        return new Receipt('driverName', 'payment_receipt_number');
-    }
-}
-```
-
-Once you create that class you have to specify it in the `payment.php` config file `map` section.
-
-```php
-'map' => [
-    ...
-    'my_driver' => App\Packages\PaymentDriver\MyDriver::class,
-]
-```
-
-**Note:-** You have to make sure that the key of the `map` array is identical to the key of the `drivers` array.
-
-#### Events
-
-you can listen for 2 events
-
-- **InvoicePurchasedEvent** : occures when an invoice is purchased (after purchasing invoice is done successfully).
-- **InvoiceVerifiedEvent** : occures when an invoice is verified successfully.
-
-## Change log
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
-
-## Security
-
-If you discover any security related issues, please email khanzadimahdi@gmail.com instead of using the issue tracker.
-
-## Credits
-
-- [Mahdi khanzadi][link-author]
-- [All Contributors][link-contributors]
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-[ico-version]: https://img.shields.io/packagist/v/Payro/payment.svg?style=flat-square
-[ico-download]: https://img.shields.io/packagist/dt/Payro/payment.svg?color=%23F18&style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/Payro/payment.svg?label=Code%20Quality&style=flat-square
-
-[link-fa]: README-FA.md
-[link-en]: README.md
-[link-packagist]: https://packagist.org/packages/Payro/payment
-[link-code-quality]: https://scrutinizer-ci.com/g/Payro/payment
-[link-author]: https://github.com/khanzadimahdi
-[link-contributors]: ../../contributors
