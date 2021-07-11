@@ -18,6 +18,6 @@ class Payment extends Facade
      */
     public static function getFacadeAccessor()
     {
-        return 'payro-payment';
+        return 'Payro-payment';
     }
 }
