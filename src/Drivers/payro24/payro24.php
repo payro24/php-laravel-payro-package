@@ -108,6 +108,8 @@ class payro24 extends Driver
             );
 
         $body = json_decode($response->getBody()->getContents(), true);
+        return response()->json($body);
+        exit();
         if (empty($body['id'])) {
             // error has happened
             $message = $body['error_message'] ?? 'خطا در هنگام درخواست برای پرداخت رخ داده است.';
