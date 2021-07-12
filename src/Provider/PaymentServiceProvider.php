@@ -47,7 +47,7 @@ class PaymentServiceProvider extends ServiceProvider
         /**
          * Bind to service container.
          */
-        $this->app->bind('Payro-payment', function () {
+        $this->app->bind('payro-payment', function () {
             return new PaymentManager(config('payment'));
         });
     }

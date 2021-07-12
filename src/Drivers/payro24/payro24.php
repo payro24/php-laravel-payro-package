@@ -59,26 +59,24 @@ class payro24 extends Driver
     {
         $details = $this->invoice->getDetails();
 
-        $phone = null;
-        if (!empty($details['phone'])) {
-            $phone = $details['phone'];
-        } elseif (!empty($details['mobile'])) {
-            $phone = $details['mobile'];
-        }
+//        $name = '';
+//        if (isset($details['name'])) {
+//            $name = $details['name'];
+//        }
 
-        $mail = null;
-        if (!empty($details['mail'])) {
-            $mail = $details['mail'];
-        } elseif (!empty($details['email'])) {
-            $mail = $details['email'];
-        }
-
-        $desc = $this->settings->description;
-        if (!empty($details['desc'])) {
-            $desc = $details['desc'];
-        } elseif (!empty($details['description'])) {
-            $desc = $details['description'];
-        }
+//        $mail = null;
+//        if (!empty($details['mail'])) {
+//            $mail = $details['mail'];
+//        } elseif (!empty($details['email'])) {
+//            $mail = $details['email'];
+//        }
+//
+//        $desc = $this->settings->description;
+//        if (!empty($details['desc'])) {
+//            $desc = $details['desc'];
+//        } elseif (!empty($details['description'])) {
+//            $desc = $details['description'];
+//        }
 
         $data = array(
             'order_id' => $this->invoice->getUuid(),
@@ -86,10 +84,10 @@ class payro24 extends Driver
             'callback' => $this->settings->callbackUrl,
         );
 
-        if ($details['name'] !== null) array_push($data, ['name' => $details['name']]);
-        if ($phone !== null) array_push($data, ['phone' => $phone]);
-        if ($mail !== null) array_push($data, ['mail' => $mail]);
-        if ($desc !== null) array_push($data, ['desc' => $desc]);
+//        if (!isset($name)) $data['name'] = $name;
+//        if (isset($phone)) $data['phone'] = $phone;
+//        if (isset($mail)) $data['mail'] = $mail;
+//        if (isset($desc)) $data['desc'] = $desc;
 
         $response = $this
             ->client
@@ -97,17 +95,18 @@ class payro24 extends Driver
                 'POST',
                 $this->settings->apiPurchaseUrl,
                 [
-                    "json" => $data,
                     "headers" => [
                         'P-TOKEN' => $this->settings->merchantId,
                         'Content-Type' => 'application/json',
                         'P-SANDBOX' => (int)$this->settings->sandbox,
                     ],
+                    "json" => $data,
                     "http_errors" => false,
                 ]
             );
 
         $body = json_decode($response->getBody()->getContents(), true);
+
         var_dump($body);
         exit();
         if (empty($body['id'])) {
