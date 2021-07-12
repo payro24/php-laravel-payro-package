@@ -108,7 +108,7 @@ class payro24 extends Driver
             );
 
         $body = json_decode($response->getBody()->getContents(), true);
-        return response()->json($body);
+        var_dump($body);
         exit();
         if (empty($body['id'])) {
             // error has happened
