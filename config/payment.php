@@ -5,7 +5,7 @@ return [
     'drivers' => [
         'payro24' => [
             'apiPurchaseUrl' => 'https://api.payro24.ir/v1.0/payment',
-            'apiPaymentUrl' => 'https://payro24.ir/',
+            'apiPaymentUrl' => 'https://api.payro24.ir/link/',
             'apiVerificationUrl' => 'https://api.payro24.ir/v1.0/payment/verify',
             'merchantId' => '',
             'callbackUrl' => 'http://yoursite.com/path/to',

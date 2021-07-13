@@ -59,35 +59,39 @@ class payro24 extends Driver
     {
         $details = $this->invoice->getDetails();
 
-//        $name = '';
-//        if (isset($details['name'])) {
-//            $name = $details['name'];
-//        }
+        $name = '';
+        if (isset($details['name'])) {
+            $name = $details['name'];
+        }
 
-//        $mail = null;
-//        if (!empty($details['mail'])) {
-//            $mail = $details['mail'];
-//        } elseif (!empty($details['email'])) {
-//            $mail = $details['email'];
-//        }
-//
-//        $desc = $this->settings->description;
-//        if (!empty($details['desc'])) {
-//            $desc = $details['desc'];
-//        } elseif (!empty($details['description'])) {
-//            $desc = $details['description'];
-//        }
+        $mail = null;
+        if (!empty($details['mail'])) {
+            $mail = $details['mail'];
+        } elseif (!empty($details['email'])) {
+            $mail = $details['email'];
+        }
+
+        $desc = $this->settings->description;
+        if (!empty($details['desc'])) {
+            $desc = $details['desc'];
+        } elseif (!empty($details['description'])) {
+            $desc = $details['description'];
+        }
 
         $data = array(
             'order_id' => $this->invoice->getUuid(),
             'amount' => $this->invoice->getAmount(),
             'callback' => $this->settings->callbackUrl,
+            'name' => '',
+            'phone' => '',
+            'mail' => '',
+            'desc' => '',
         );
 
-//        if (!isset($name)) $data['name'] = $name;
-//        if (isset($phone)) $data['phone'] = $phone;
-//        if (isset($mail)) $data['mail'] = $mail;
-//        if (isset($desc)) $data['desc'] = $desc;
+        if (!isset($name)) $data['name'] = $name;
+        if (isset($phone)) $data['phone'] = $phone;
+        if (isset($mail)) $data['mail'] = $mail;
+        if (isset($desc)) $data['desc'] = $desc;
 
         $response = $this
             ->client
@@ -100,15 +104,12 @@ class payro24 extends Driver
                         'Content-Type' => 'application/json',
                         'P-SANDBOX' => (int)$this->settings->sandbox,
                     ],
-                    "json" => $data,
                     "http_errors" => false,
+                    "json" => $data
                 ]
             );
 
         $body = json_decode($response->getBody()->getContents(), true);
-
-        var_dump($body);
-        exit();
         if (empty($body['id'])) {
             // error has happened
             $message = $body['error_message'] ?? 'خطا در هنگام درخواست برای پرداخت رخ داده است.';
@@ -130,13 +131,7 @@ class payro24 extends Driver
     {
         $apiUrl = $this->settings->apiPaymentUrl;
 
-        // use sandbox url if we are in sandbox mode
-        if (!empty($this->settings->sandbox)) {
-            $apiUrl = $this->settings->apiSandboxPaymentUrl;
-        }
-
         $payUrl = $apiUrl . $this->invoice->getTransactionId();
-
         // redirect using laravel logic
         return redirect()->to($payUrl);
     }
